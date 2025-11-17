@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AES Research Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+  <style>
+    body { font-family: Arial; margin: 30px; background:#f7f7f7; }
+    .controls { display:flex; gap:12px; margin-bottom:12px; }
+    button{padding:8px 14px;border-radius:6px;border:none;background:#007bff;color:white;cursor:pointer;}
+    #results{background:white;padding:12px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  </style>
+</head>
+<body>
+  <h1>AES-256 Research Dashboard</h1>
+  <div class="controls">
+    <select id="size">
+      <option value="10">10 MB</option>
+      <option value="50" selected>50 MB</option>
+      <option value="100">100 MB</option>
+    </select>
+    <select id="mode">
+      <option>ECB</option>
+      <option>CBC</option>
+      <option selected>CTR</option>
+    </select>
+    <select id="threads">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="4" selected>4</option>
+      <option value="8">8</option>
+    </select>
+    <button id="run">Run Single</button>
+    <button id="gen">Generate Data</button>
+  </div>
+  <div id="results">No runs yet.</div>
+  <canvas id="chart" width="800" height="300"></canvas>
+</body>
+</html>

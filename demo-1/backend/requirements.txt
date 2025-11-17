@@ -1,0 +1,6 @@
+flask
+pycryptodome
+psutil
+pandas
+matplotlib
+tqdm

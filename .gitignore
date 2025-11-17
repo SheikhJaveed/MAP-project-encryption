@@ -1,0 +1,17 @@
+# Ignore binary test files
+*.bin
+data/*.bin
+results/**/*.json
+results/**/*.csv
+results/**/*.bin
+
+# Python
+__pycache__/
+*.pyc
+
+# Node (frontend)
+node_modules/
+build/
+dist/
+.vscode/
+.DS_Store
