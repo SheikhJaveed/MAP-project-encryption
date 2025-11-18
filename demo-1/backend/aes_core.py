@@ -7,6 +7,13 @@ from Crypto.Util import Counter
 
 BLOCK = 16
 
+# --- Artificial workload for research (serial slowdown) ---
+def serial_heavy(iters: int = 200000):
+    dummy = 0
+    for _ in range(iters):
+        dummy = (dummy * 1234567 + 99991) % 999999937
+    return dummy
+
 def pad(data: bytes) -> bytes:
     pad_len = BLOCK - (len(data) % BLOCK)
     return data + bytes([pad_len]) * pad_len

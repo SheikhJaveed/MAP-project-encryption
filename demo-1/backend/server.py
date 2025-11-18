@@ -4,6 +4,8 @@ from pathlib import Path
 from .generate_data import generate_file
 from .benchmark import run_single_experiment
 from .aes_core import new_key
+from .aes_core import encrypt_serial
+from .threadpool import encrypt_parallel
 
 app = Flask(__name__, static_folder="../frontend", static_url_path="/")
 
@@ -60,6 +62,45 @@ def benchmarks():
             return jsonify(json.load(f))
     return jsonify([])
 
+@app.route("/run_thread_sweep", methods=["POST"])
+def run_thread_sweep():
+    payload = request.json
+    size = payload.get("size_mb", 50)
+    mode = payload.get("mode", "CTR")
+
+    from pathlib import Path
+    base_dir = Path(__file__).resolve().parent.parent
+    data_path = base_dir / "data" / f"sample_{size}MB.bin"
+
+    if not data_path.exists():
+        return jsonify({"error": "data not found"}), 400
+
+    # THESE TWO LINES ARE REQUIRED
+    from .aes_core import encrypt_serial
+    from .threadpool import encrypt_parallel
+
+    thread_list = [1, 2, 4, 8, 16]
+    key = new_key()
+
+    results = []
+
+    with open(data_path, "rb") as f:
+        data = f.read()
+
+    for threads in thread_list:
+        # Serial encryption
+        encrypted_serial, t1 = encrypt_serial(data, key, mode)
+
+        # Parallel encryption
+        encrypted_parallel, t2 = encrypt_parallel(data, key, mode, threads)
+
+        results.append({
+            "threads": threads,
+            "serial": t1,
+            "parallel": t2
+        })
+
+    return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)

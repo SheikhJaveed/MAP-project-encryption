@@ -15,6 +15,60 @@ document.getElementById('gen').onclick = async () => {
   document.getElementById('results').innerText = 'Generated: ' + j.path;
 };
 
+document.getElementById('threadSweep').onclick = async () => {
+  const size = parseInt(document.getElementById('size').value);
+  const mode = document.getElementById('mode').value;
+
+  document.getElementById('results').innerText = "Running thread sweep...";
+
+  const res = await postJSON('/run_thread_sweep', {
+    size_mb: size,
+    mode: mode
+  });
+
+  document.getElementById('results').innerText = "Completed thread sweep.";
+
+  const threads = res.map(r => r.threads);
+  const serial = res.map(r => r.serial);
+  const parallel = res.map(r => r.parallel);
+
+  const ctx = document.getElementById('chart').getContext('2d');
+  if (window.myChart) window.myChart.destroy();
+
+  window.myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: threads,
+      datasets: [
+        {
+          label: "Paralled Time (s)",
+          data: parallel,
+          borderWidth: 2,
+          borderColor: "#007bff"
+        },
+        {
+          label: "Serial Time (s)",
+          data: serial,
+          borderWidth: 2,
+          borderColor: "#28a745"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title:{display:true, text:"Time (seconds)"}
+        },
+        x: {
+          title:{display:true, text:"Thread Count"}
+        }
+      }
+    }
+  });
+};
+
 document.getElementById('run').onclick = async () => {
   const size = parseInt(document.getElementById('size').value);
   const mode = document.getElementById('mode').value;

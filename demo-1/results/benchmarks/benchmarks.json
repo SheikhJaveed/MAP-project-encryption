@@ -43,5 +43,188 @@
     "serial_decrypt_time": 0.040792,
     "parallel_time": 0.067316,
     "speedup": 1.62
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.185362,
+    "serial_decrypt_time": 0.09506,
+    "parallel_time": 0.126707,
+    "speedup": 1.46
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.06282,
+    "serial_decrypt_time": 0.062185,
+    "parallel_time": 0.053397,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.068728,
+    "serial_decrypt_time": 0.065737,
+    "parallel_time": 0.058419,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.142645,
+    "serial_decrypt_time": 0.158772,
+    "parallel_time": 0.121248,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_100MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.262884,
+    "serial_decrypt_time": 0.269164,
+    "parallel_time": 0.223451,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.142165,
+    "serial_decrypt_time": 0.095775,
+    "parallel_time": 0.113216,
+    "speedup": 1.26
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.142505,
+    "serial_decrypt_time": 0.090042,
+    "parallel_time": 0.10069,
+    "speedup": 1.42
+  },
+  {
+    "file": "sample_100MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.126549,
+    "serial_decrypt_time": 0.148939,
+    "parallel_time": 0.107566,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.120279,
+    "serial_decrypt_time": 0.080271,
+    "parallel_time": 0.083542,
+    "speedup": 1.44
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.126984,
+    "serial_decrypt_time": 0.122337,
+    "parallel_time": 0.085593,
+    "speedup": 1.48
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.086751,
+    "serial_decrypt_time": 0.116208,
+    "parallel_time": 0.073738,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.247289,
+    "serial_decrypt_time": 0.307901,
+    "parallel_time": 0.210196,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.114189,
+    "serial_decrypt_time": 0.164375,
+    "parallel_time": 0.09706,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.111342,
+    "serial_decrypt_time": 0.097373,
+    "parallel_time": 0.094641,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.11228,
+    "serial_decrypt_time": 0.087174,
+    "parallel_time": 0.093921,
+    "speedup": 1.2
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.098894,
+    "serial_decrypt_time": 0.113465,
+    "parallel_time": 0.08406,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.103281,
+    "serial_decrypt_time": 0.097653,
+    "parallel_time": 0.087789,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.080935,
+    "serial_decrypt_time": 0.099751,
+    "parallel_encrypt_time": 1.521884,
+    "parallel_decrypt_time": 1.458308,
+    "correct": true,
+    "speedup_encrypt": 0.053,
+    "speedup_decrypt": 0.068
+  },
+  {
+    "file": "sample_50MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.235952,
+    "serial_decrypt_time": 0.181714,
+    "parallel_time": 0.200559,
+    "speedup": 1.18
+  },
+  {
+    "file": "sample_100MB.bin",
+    "mode": "CTR",
+    "threads": 4,
+    "serial_encrypt_time": 0.123472,
+    "serial_decrypt_time": 0.146807,
+    "parallel_time": 0.104951,
+    "speedup": 1.18
   }
 ]
