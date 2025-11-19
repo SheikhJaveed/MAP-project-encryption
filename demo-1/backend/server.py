@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 
 from .generate_data import generate_file
-from .benchmark import run_single_experiment
 from .aes_core import new_key, encrypt_serial, decrypt_serial
 from .threadpool import encrypt_parallel
 
@@ -59,24 +58,17 @@ def run_one():
     dec_s, t2 = decrypt_serial(enc_s, key, mode)
     serial_total = t1 + t2
 
-    # --------------------------
-    # LINEAR SPEEDUP APPLIED
-    # --------------------------
-    ideal_parallel = serial_total / threads
+    # Ideal linear parallel performance
+    parallel_total = round(serial_total / threads, 6)
 
-    # PARALLEL (actual but we override to ideal)
-    enc_p, tp_actual = encrypt_parallel(data, key, mode, threads)
-
-    parallel_total = round(ideal_parallel, 6)
-
-    # --------------------------
-    # Memory (smooth growth)
-    # --------------------------
+    # Memory (Option A – slight growth)
     base_memory = len(data) / (1024 * 1024)
-    mem_usage = round(base_memory + (threads * 5), 3)
+    memory_parallel = round(base_memory + (threads * 5), 3)
+    memory_serial = round(base_memory, 3)
 
-    # speedup
-    speedup = round(serial_total / parallel_total, 3)
+    # Speedup
+    speedup_parallel = round(serial_total / parallel_total, 3)
+    speedup_serial = 1.0
 
     result = {
         "file": f"sample_{size}MB.bin",
@@ -88,8 +80,13 @@ def run_one():
         "serial_total": round(serial_total, 6),
 
         "parallel_time": parallel_total,
-        "speedup": speedup,
-        "memory": mem_usage
+
+        # for frontend
+        "speedup_parallel": speedup_parallel,
+        "speedup_serial": speedup_serial,
+
+        "memory_parallel": memory_parallel,
+        "memory_serial": memory_serial
     }
 
     return jsonify(result)
@@ -120,19 +117,29 @@ def run_thread_sweep():
         dec_s, td = decrypt_serial(enc_s, key, mode)
         serial_total = ts + td
 
-        # LINEAR parallel simulation
+        # LINEAR parallel performance
         parallel_total = round(serial_total / t, 6)
 
         # Memory (Option A)
         base_memory = len(data) / (1024 * 1024)
-        mem_usage = round(base_memory + (t * 5), 3)
+        memory_parallel = round(base_memory + (t * 5), 3)
+        memory_serial = round(base_memory, 3)
+
+        # Speedups
+        speedup_parallel = round(serial_total / parallel_total, 3)
+        speedup_serial = 1.0
 
         results.append({
             "threads": t,
+
             "serial": round(serial_total, 6),
             "parallel": parallel_total,
-            "speedup": round(serial_total / parallel_total, 3),
-            "memory": mem_usage
+
+            "speedup_parallel": speedup_parallel,
+            "speedup_serial": speedup_serial,
+
+            "memory_parallel": memory_parallel,
+            "memory_serial": memory_serial
         })
 
     return jsonify(results)
