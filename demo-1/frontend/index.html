@@ -12,30 +12,46 @@
     #results{background:white;padding:12px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
   </style>
 </head>
+
 <body>
+
   <h1>AES-256 Research Dashboard</h1>
+
   <div class="controls">
     <select id="size">
       <option value="10">10 MB</option>
       <option value="50" selected>50 MB</option>
       <option value="100">100 MB</option>
     </select>
+
     <select id="mode">
       <option>ECB</option>
       <option>CBC</option>
       <option selected>CTR</option>
     </select>
+
     <select id="threads">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="4" selected>4</option>
       <option value="8">8</option>
     </select>
+
     <button id="run">Run Single</button>
     <button id="gen">Generate Data</button>
     <button id="threadSweep">Run Thread Sweep</button>
   </div>
+
   <div id="results">No runs yet.</div>
+
+  <h2>Encryption Time Comparison</h2>
   <canvas id="chart" width="800" height="300"></canvas>
+
+  <h2>Speedup (Serial / Parallel)</h2>
+  <canvas id="speedChart" width="800" height="300"></canvas>
+
+  <h2>Memory Usage (MB)</h2>
+  <canvas id="memoryChart" width="800" height="300"></canvas>
+
 </body>
 </html>
